@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+</head>
+<body>
+    <h1>留言列表</h1>
+    <ul>
+        {% for text in message_list %}
+        <li>{{ text.created }} {{ text.user }} to {{ text.receipt}} : {{text.content}}</li><!--List item-->
+        {% endfor %}
+    </ul>
+</body>
+</html>
