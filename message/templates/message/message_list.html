@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>留言板</title>
-</head>
-<body>
-    <h1>留言列表</h1>
+{% extends "base.html" %}
+
+{% block title %}
+ - 列表
+{% endblock %}
+
+{% block content %}
+<h1>留言列表</h1>
     <ul>
-        {% for text in message_list %}
-        <li>{{ text.created }} {{ text.user }} to {{ text.receipt}} : {{text.content}}</li><!--List item-->
+        {% for msg in message_list %}
+        <li>{{ msg.created }}:<a href="{% url 'msg_read' msg.id %}">{{ msg.subject }}</a></li>
+        <!--List item--><!--url後面放的是要在資料夾中逆向追蹤的目標-->
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

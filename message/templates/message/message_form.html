@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}<!--#jango內建安全機制-->
+    <table>
+        {{ form.as_table }}<!--在不用<table>的情況下也可以用{{ form.as_p }}-->
+        <!--註:as_p真的比較醜-->
+        </table>
+    <input type="submit" value="送出留言">
+</form>
+{% endblock %}
