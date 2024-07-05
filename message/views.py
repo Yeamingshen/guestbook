@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from .models import Message
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin #拿來確認是否有登入
 
 # Create your views here.
 class MessageList(ListView):
@@ -22,7 +23,7 @@ class MessageNew(CreateView):
     success_url = reverse_lazy('msg_list')#當成功後回到列表，reverse_lazy會自動回追
     #自動找 message/message_form.html 作使用
 
-class MessageDelete(DeleteView):
+class MessageDelete(LoginRequiredMixin, DeleteView):#後來加入是為了檢測登入狀態、且需要注意的是此兩個順序不可顛倒
     model = Message
     success_url = reverse_lazy('msg_list')#原'/message/'是指定位址，但用reverse_lazy則是追蹤回上頁
 

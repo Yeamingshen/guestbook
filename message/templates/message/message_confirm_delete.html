@@ -2,6 +2,10 @@
 
 {% block content %}
 <h1>刪除留言</h1>
+<div>留言者: {{ message.user }}</div>
+<div>留言對象: {{message.receipt }}</div>
+<div>主題: {{ message.subject }}</div>
+<div>內容: {{ message.content }}</div>
 <form action="" method="post">
     {% csrf_token %}
     <input type="submit" value="是的、我要刪除.">

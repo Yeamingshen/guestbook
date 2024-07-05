@@ -10,7 +10,9 @@
         {% for msg in message_list %}
         <li>{{ msg.created }}:
         <a href="{% url 'msg_read' msg.id %}">{{ msg.subject }}</a></li>
-        <a href="{% url 'msg_delete' msg.id %}">刪除</a>
+        {% if user.is_authenticated %}    
+            <a href="{% url 'msg_delete' msg.id %}">刪除</a>
+        {% endif %}
         <!--List item--><!--url後面放的是要在資料夾中逆向追蹤的目標-->
         {% endfor %}
     </ul>

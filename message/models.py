@@ -8,5 +8,6 @@ class Message(models.Model):
     content = models.TextField('內容')
     created = models.DateTimeField('留言時間', auto_now_add = True)#auto_now_add代表會在留言時自動記錄日期
     #updated = models.DateTimeField('最後修改時間', auto_now = True)#auto_now代表會更新資料時間，在修改時不會動到auto_now_add但會動到auto_now
-
+    def __str__(self):
+        return self.subject + ":" + self.content
     
