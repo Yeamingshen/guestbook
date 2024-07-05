@@ -8,8 +8,11 @@
 <h1>留言列表</h1>
     <ul>
         {% for msg in message_list %}
-        <li>{{ msg.created }}:<a href="{% url 'msg_read' msg.id %}">{{ msg.subject }}</a></li>
+        <li>{{ msg.created }}:
+        <a href="{% url 'msg_read' msg.id %}">{{ msg.subject }}</a></li>
+        <a href="{% url 'msg_delete' msg.id %}">刪除</a>
         <!--List item--><!--url後面放的是要在資料夾中逆向追蹤的目標-->
         {% endfor %}
     </ul>
+    <a href="{% url 'msg_create' %}">留下你想說的話.</a>
 {% endblock %}
